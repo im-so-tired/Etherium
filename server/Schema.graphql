@@ -1,0 +1,37 @@
+type blockType {
+  id: ID
+  nomer: Int
+  hash: String
+  time: String
+  countTrans: Float
+  countCall: Float
+  totalAmount: [Int]
+}
+type user {
+  id: ID
+  email: String
+  phone: String
+  password: String
+}
+type auth {
+  email: String
+  password: String
+}
+type transfer {
+  from: String
+  to: String
+  sum: String
+  message: String
+}
+type Query {
+  getBlocks: [blockType]
+  getAllUsers: [user!]!
+  getAuth: auth
+  getTransferHistory: [transfer]!
+}
+type Mutation {
+  addUser(email: String, phone: String, password: String): user!
+  setAuth(email: String, password: String): auth!
+  addTransfer(from: String, to: String, sum: Int, message: String): transfer!
+  createBlock(sum: Int): blockType!
+}
